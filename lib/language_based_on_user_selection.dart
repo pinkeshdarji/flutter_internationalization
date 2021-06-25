@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_internationalization/provider/app_locale.dart';
 import 'package:provider/provider.dart';
@@ -123,21 +124,30 @@ class _LanguageBasedOnUserSelectionState
               ),
               Text(
                 AppLocalizations.of(context)!.user_status('Pinkesh', 'online'),
-                style: TextStyle(fontSize: 30),
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.amber,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
                 AppLocalizations.of(context)!.population(1200000),
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
                 AppLocalizations.of(context)!.networth(32000000),
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.teal,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
@@ -145,14 +155,20 @@ class _LanguageBasedOnUserSelectionState
               Text(
                 AppLocalizations.of(context)!
                     .on_date(DateTime.utc(2021, 6, 25)),
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.deepPurpleAccent,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
                 AppLocalizations.of(context)!.nThings(1, 'Message'),
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.greenAccent,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),
