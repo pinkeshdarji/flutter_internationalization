@@ -21,11 +21,6 @@ class _LanguageBasedOnUserSelectionState
   int selectedLangIndex = 0;
   var _appLocale;
 
-  Map<String, String> _languageMap = {
-    'en': 'English',
-    'de': 'German',
-    'fr': 'French'
-  };
   late AppLanguage dropdownValue;
 
   @override
@@ -77,45 +72,90 @@ class _LanguageBasedOnUserSelectionState
       ),
       body: SafeArea(
         child: Container(
-          child: Center(
-              child: Column(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DropdownButton<AppLanguage>(
-                value: dropdownValue,
-                iconSize: 30,
-                onChanged: (AppLanguage? language) {
-                  dropdownValue = language!;
-                  _appLocale.changeLocale(Locale(language!.languageCode));
-                  _setFlag();
-                  setLocale(language!.languageCode);
-                },
-                items: AppLanguage.languages()
-                    .map<DropdownMenuItem<AppLanguage>>(
-                      (e) => DropdownMenuItem<AppLanguage>(
-                          value: e, child: Text(e.name)),
-                    )
-                    .toList(),
+              Center(
+                child: DropdownButton<AppLanguage>(
+                  value: dropdownValue,
+                  iconSize: 40,
+                  style: TextStyle(fontSize: 25),
+                  onChanged: (AppLanguage? language) {
+                    dropdownValue = language!;
+                    _appLocale.changeLocale(Locale(language!.languageCode));
+                    _setFlag();
+                    setLocale(language!.languageCode);
+                  },
+                  items: AppLanguage.languages()
+                      .map<DropdownMenuItem<AppLanguage>>(
+                        (e) => DropdownMenuItem<AppLanguage>(
+                            value: e,
+                            child: Text(
+                              e.name,
+                            )),
+                      )
+                      .toList(),
+                ),
               ),
-              IndexedStack(
-                index: selectedLangIndex,
-                children: [
-                  Text('🇺🇸',
-                      style: TextStyle(
-                          fontSize: 250, fontWeight: FontWeight.bold)),
-                  Text('🇩🇪',
-                      style: TextStyle(
-                          fontSize: 250, fontWeight: FontWeight.bold)),
-                  Text('🇫🇷',
-                      style: TextStyle(
-                          fontSize: 250, fontWeight: FontWeight.bold)),
-                ],
+              Center(
+                child: IndexedStack(
+                  index: selectedLangIndex,
+                  children: [
+                    Text('🇺🇸',
+                        style: TextStyle(
+                            fontSize: 250, fontWeight: FontWeight.bold)),
+                    Text('🇩🇪',
+                        style: TextStyle(
+                            fontSize: 250, fontWeight: FontWeight.bold)),
+                    Text('🇫🇷',
+                        style: TextStyle(
+                            fontSize: 250, fontWeight: FontWeight.bold)),
+                  ],
+                ),
               ),
               Text(
                 AppLocalizations.of(context)!.hello,
                 style: TextStyle(fontSize: 30),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppLocalizations.of(context)!.user_status('Pinkesh', 'online'),
+                style: TextStyle(fontSize: 30),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppLocalizations.of(context)!.population(1200000),
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppLocalizations.of(context)!.networth(32000000),
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppLocalizations.of(context)!
+                    .on_date(DateTime.utc(2021, 6, 25)),
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppLocalizations.of(context)!.nThings(1, 'Message'),
+                style: TextStyle(fontSize: 25),
+              ),
             ],
-          )),
+          ),
         ),
       ),
     );
