@@ -35,9 +35,9 @@ class _LanguageBasedOnUserSelectionState
     super.didChangeDependencies();
     _appLocale = Provider.of<AppLocale>(context);
     getLocale().then((locale) {
-      _appLocale.changeLocale(Locale(locale!.languageCode));
+      _appLocale.changeLocale(Locale(locale.languageCode));
       dropdownValue = AppLanguage.languages().firstWhere(
-          (element) => element.languageCode == locale!.languageCode);
+          (element) => element.languageCode == locale.languageCode);
       _setFlag();
     });
   }
